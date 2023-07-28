@@ -1,7 +1,7 @@
 {
-    "chrome_driver": "C:\\chromedriver\\chromedriver.exe",
-    "username_input_xpath": "//*[@id='x-auto-1-input']",
-    "password_input_xpath": "//*[@id='x-auto-2-input']",
-    "login_button_xpath": "/html/body/div/div/div[2]/div/div[3]/div/div",
-    "button_to_click_xpath": "/html/body/div/div/div[2]/div/div[2]/div[1]/div/div[2]/div[1]/div[2]/div[1]/div/div[1]/div[2]/div[1]/div/div[1]/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[1]/div/div[2]/div/div/div[1]/div/div"
+    "button_to_click_xpath": "your_button_xpath",
+    "chrome_driver": "path/to/chromedriver",
+    "username_input_xpath": "your_username_input_xpath",
+    "password_input_xpath": "your_password_input_xpath",
+    "login_button_xpath": "your_login_button_xpath"
 }
