@@ -2,6 +2,8 @@ import os
 from selenium import webdriver
 
 def login():
+    
+     # get environment variables
     username = os.environ.get('APP_USERNAME')
     password = os.environ.get('APP_PASSWORD')
     login_url = os.environ.get('LOGIN_URL')
