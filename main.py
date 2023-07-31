@@ -38,6 +38,6 @@ if __name__ == '__main__':
 
     button_to_click.click()
 
-    print("Succesfully refreshsed at " + datetime.datetime.now())
+    print("Succesfully refreshsed at " + str(datetime.datetime.now()))
 
     driver.quit()
