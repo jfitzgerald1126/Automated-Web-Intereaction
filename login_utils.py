@@ -1,4 +1,5 @@
 import os
+from pyvirtualdisplay import Display
 from config_utils import load_config
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -34,27 +35,40 @@ def login():
      # Load additional configuration from 'config.json'
     config = load_config()
 
-    # Initialize Chrome WebDriver with the provided 'chrome_driver' path
-    service = Service(executable_path=config['chrome_driver'])
-    driver = webdriver.Chrome(service=service)
-    driver.get(login_url)
+    # Start a virtual display
+    display = Display(visible=0, size=(800, 600))
+    display.start()
 
-    # Wait for fields to be ready
-    username_input = WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located((By.XPATH, config['username_input_xpath']))
-    )
-    password_input = WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located((By.XPATH, config['password_input_xpath']))
-    )
+    try:
+        # Initialize Chrome WebDriver with the provided 'chrome_driver' path
+        service = Service(executable_path=config['chrome_driver'])
+        driver = webdriver.Chrome(service=service)
+        driver.get(login_url)
 
-    # Enter username / password in fields
-    username_input.send_keys(username)
-    password_input.send_keys(password)
+        # Wait for fields to be ready
+        username_input = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, config['username_input_xpath']))
+        )
+        password_input = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, config['password_input_xpath']))
+        )
 
-    # Login
-    login_button = driver.find_element('xpath', config['login_button_xpath'])
-    login_button.click()
+        # Enter username / password in fields
+        username_input.send_keys(username)
+        password_input.send_keys(password)
 
-    return driver
+        # Login
+        login_button = driver.find_element('xpath', config['login_button_xpath'])
+        login_button.click()
+
+        return driver
+    
+    except Exception as e:
+        # Handle exception
+        raise e
+    
+    finally:
+        # Close display
+        display.stop()
 
 
