@@ -26,7 +26,7 @@ if __name__ == '__main__':
     used to locate the button for clicking.
     """
     try:
-        driver = login()
+        driver, display = login()
         config = load_config()
 
         # Wait for the button element to be clickable
@@ -42,6 +42,8 @@ if __name__ == '__main__':
         print("Succesfully refreshsed at " + str(datetime.datetime.now()))
 
         driver.quit()
+        display.stop()
+        
 
     except Exception as e:
         # Handle exceptions
