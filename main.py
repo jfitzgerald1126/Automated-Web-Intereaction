@@ -50,7 +50,8 @@ if __name__ == '__main__':
 
     except Exception as e:
         # Handle exceptions
-        raise e
+        # raise e
+        pass
     
     finally:
         # Close display
