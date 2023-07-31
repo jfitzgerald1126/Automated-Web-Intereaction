@@ -25,19 +25,24 @@ if __name__ == '__main__':
     Make sure 'config.json' contains the necessary XPaths, including the 'button_to_click_xpath'
     used to locate the button for clicking.
     """
-    driver = login()
-    config = load_config()
+    try:
+        driver = login()
+        config = load_config()
 
-    # Wait for the button element to be clickable
-    button_to_click = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, config['button_to_click_xpath']))
-    )
+        # Wait for the button element to be clickable
+        button_to_click = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, config['button_to_click_xpath']))
+        )
 
-    # schedule click ...
-    # or click once and schedule script
+        # schedule click ...
+        # or click once and schedule script
 
-    button_to_click.click()
+        button_to_click.click()
 
-    print("Succesfully refreshsed at " + str(datetime.datetime.now()))
+        print("Succesfully refreshsed at " + str(datetime.datetime.now()))
 
-    driver.quit()
+        driver.quit()
+
+    except Exception as e:
+        # Handle exceptions
+        raise e
