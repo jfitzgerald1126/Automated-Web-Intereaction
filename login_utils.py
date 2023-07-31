@@ -35,9 +35,9 @@ def login():
      # Load additional configuration from 'config.json'
     config = load_config()
 
-    # Start a virtual display
-    display = Display(visible=0, size=(800, 600))
-    display.start()
+    # # Start a virtual display
+    # display = Display(visible=0, size=(800, 600))
+    # display.start()
 
     try:
         # Initialize Chrome WebDriver with the provided 'chrome_driver' path
@@ -67,8 +67,8 @@ def login():
         # Handle exception
         raise e
     
-    finally:
-        # Close display
-        display.stop()
+    # finally:
+    #     # Close display
+    #     display.stop()
 
 
