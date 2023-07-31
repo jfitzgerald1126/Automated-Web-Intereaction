@@ -1,4 +1,5 @@
 from login_utils import login
+from pyvirtualdisplay import Display
 from config_utils import load_config
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -25,19 +26,32 @@ if __name__ == '__main__':
     Make sure 'config.json' contains the necessary XPaths, including the 'button_to_click_xpath'
     used to locate the button for clicking.
     """
-    driver = login()
-    config = load_config()
+    # Start a virtual display
+    display = Display(visible=0, size=(800, 600))
+    display.start()
 
-    # Wait for the button element to be clickable
-    button_to_click = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, config['button_to_click_xpath']))
-    )
+    try:
+        driver = login()
+        config = load_config()
 
-    # schedule click ...
-    # or click once and schedule script
+        # Wait for the button element to be clickable
+        button_to_click = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, config['button_to_click_xpath']))
+        )
 
-    button_to_click.click()
+        # schedule click ...
+        # or click once and schedule script
 
-    print("Succesfully refreshsed at " + str(datetime.datetime.now()))
+        button_to_click.click()
 
-    driver.quit()
+        print("Succesfully refreshsed at " + str(datetime.datetime.now()))
+
+        driver.quit()
+
+    except Exception as e:
+        # Handle exceptions
+        raise e
+    
+    finally:
+        # Close display
+        display.stop()
