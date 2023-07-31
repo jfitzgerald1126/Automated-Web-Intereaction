@@ -3,6 +3,7 @@ from config_utils import load_config
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import datetime
 
 if __name__ == '__main__':
     """
@@ -36,5 +37,7 @@ if __name__ == '__main__':
     # or click once and schedule script
 
     button_to_click.click()
+
+    print("Succesfully refreshsed at " + datetime.datetime.now())
 
     driver.quit()
