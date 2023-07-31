@@ -1,4 +1,5 @@
 from login_utils import login
+from pyvirtualdisplay import Display
 from config_utils import load_config
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -25,6 +26,10 @@ if __name__ == '__main__':
     Make sure 'config.json' contains the necessary XPaths, including the 'button_to_click_xpath'
     used to locate the button for clicking.
     """
+    # Start a virtual display
+    display = Display(visible=0, size=(800, 600))
+    display.start()
+
     try:
         driver = login()
         config = load_config()
@@ -46,3 +51,7 @@ if __name__ == '__main__':
     except Exception as e:
         # Handle exceptions
         raise e
+    
+    finally:
+        # Close display
+        display.stop()
