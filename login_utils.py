@@ -66,9 +66,6 @@ def login():
     except Exception as e:
         # Handle exception
         raise e
-    
-    # finally:
-    #     # Close display
-    #     display.stop()
+
 
 
