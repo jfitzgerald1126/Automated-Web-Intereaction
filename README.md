@@ -10,6 +10,8 @@ This project demonstrates how to automate web application interactions using Sel
 
 3. `main.py`: The main script where the automation process is orchestrated. It calls the `login()` function from `login_utils.py` to log in and obtains the WebDriver instance. Then, it uses the `load_config()` function from `config_utils.py` to load additional configuration details. Finally, it waits for the specified button element (using the XPath from the configuration) to become clickable and clicks the button to perform the desired action on the web application.
 
+4. `run.sh`: A bash wrapper script that sets necessary environment variables and runs `main.py`. This is useful for running the automation via a cron job or scheduling.
+
 ## Usage:
 
 1. Ensure you have Python and the necessary libraries installed (Selenium).
@@ -30,7 +32,13 @@ This project demonstrates how to automate web application interactions using Sel
 
 4. Set environment variables `APP_USERNAME`, `APP_PASSWORD`, and `LOGIN_URL` with your login credentials and login URL.
 
-5. Run `main.py` to start the automation process.
+5. If using the bash wrapper script:
+    - Make the bash wrapper script executable with `chmod +x script.sh`.
+    - Update the environment variable assignments inside the script with your actual values.
+
+6. To run the automation process directly, use the command: `python3 main.py`.
+
+7. To run the automation process via the bash wrapper script, use the command: `./script.sh`.
 
 ## Important Note:
 Ensure that the 'config.json' file contains the necessary XPaths, especially the 'button_to_click_xpath', which is used to locate the button for clicking.
