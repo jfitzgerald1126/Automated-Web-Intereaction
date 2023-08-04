@@ -58,7 +58,7 @@ def login():
         password_input.send_keys(password)
 
         # Login
-        login_button = driver.find_element('xpath', config['login_button_xpath'])
+        login_button = driver.find_element(By.XPATH, config['login_button_xpath'])
         login_button.click()
 
         return driver
